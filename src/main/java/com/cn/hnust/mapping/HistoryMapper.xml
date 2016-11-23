@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.hnust.dao.HistoryDao">
+	<resultMap id="BaseResultMap" type="com.cn.hnust.pojo.History">
+		<id column="hID" property="hid" jdbcType="INTEGER" />
+		<result column="userID" property="userid" jdbcType="INTEGER" />
+		<result column="cID" property="cid" jdbcType="INTEGER" />
+		<result column="time" property="time" jdbcType="TIMESTAMP" />
+		<result column="message" property="message" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		hID, userID, cID, time, message
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from history
+		where hID = #{hid,jdbcType=INTEGER}
+	</select>
+	<select id="selectAll" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from history
+	</select>
+	<select id="selectByUserIdAndCId" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from history
+		where userID=#{0} and cID = #{1}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from history
+		where hID = #{hid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.cn.hnust.pojo.History">
+		insert into history (hID, userID, cID,
+		time, message)
+		values (#{hid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER},
+		#{cid,jdbcType=INTEGER},
+		#{time,jdbcType=TIMESTAMP}, #{message,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.cn.hnust.pojo.History">
+		insert into history
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="hid != null">
+				hID,
+			</if>
+			<if test="userid != null">
+				userID,
+			</if>
+			<if test="cid != null">
+				cID,
+			</if>
+			<if test="time != null">
+				time,
+			</if>
+			<if test="message != null">
+				message,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="hid != null">
+				#{hid,jdbcType=INTEGER},
+			</if>
+			<if test="userid != null">
+				#{userid,jdbcType=INTEGER},
+			</if>
+			<if test="cid != null">
+				#{cid,jdbcType=INTEGER},
+			</if>
+			<if test="time != null">
+				#{time,jdbcType=TIMESTAMP},
+			</if>
+			<if test="message != null">
+				#{message,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.cn.hnust.pojo.History">
+		update history
+		<set>
+			<if test="userid != null">
+				userID = #{userid,jdbcType=INTEGER},
+			</if>
+			<if test="cid != null">
+				cID = #{cid,jdbcType=INTEGER},
+			</if>
+			<if test="time != null">
+				time = #{time,jdbcType=TIMESTAMP},
+			</if>
+			<if test="message != null">
+				message = #{message,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where hID = #{hid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.cn.hnust.pojo.History">
+		update history
+		set userID = #{userid,jdbcType=INTEGER},
+		cID = #{cid,jdbcType=INTEGER},
+		time = #{time,jdbcType=TIMESTAMP},
+		message = #{message,jdbcType=VARCHAR}
+		where hID = #{hid,jdbcType=INTEGER}
+	</update>
+</mapper>

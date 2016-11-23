@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.hnust.dao.MessageDao">
+	<resultMap id="BaseResultMap" type="com.cn.hnust.pojo.Message">
+		<id column="mID" property="mid" jdbcType="INTEGER" />
+		<result column="uSendID" property="usendid" jdbcType="INTEGER" />
+		<result column="userID" property="userid" jdbcType="INTEGER" />
+		<result column="time" property="time" jdbcType="TIMESTAMP" />
+		<result column="news" property="news" jdbcType="VARCHAR" />
+		<result column="isNew" property="isnew" jdbcType="INTEGER" />
+	</resultMap>
+	<resultMap type="com.cn.hnust.pojo.Message_User" id="m_uResultMap">
+		<id column="mID" property="mid" jdbcType="INTEGER" />
+		<result column="uSendID" property="usendid" jdbcType="INTEGER" />
+		<result column="userID" property="userid" jdbcType="INTEGER" />
+		<result column="time" property="time" jdbcType="TIMESTAMP" />
+		<result column="news" property="news" jdbcType="VARCHAR" />
+		<result column="isNew" property="isnew" jdbcType="INTEGER" />
+		<result column="netName" property="netname" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		mID, uSendID, userID, time, news, isNew
+	</sql>
+	<sql id="Base_M_U_List">
+		mID, uSendID, u.userID, time, news, isNew,netName
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from message
+		where mID = #{mid,jdbcType=INTEGER}
+	</select>
+	<select id="selectAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from message
+	</select>
+	<select id="selectById" resultMap="m_uResultMap">
+		select
+		<include refid="Base_M_U_List" />
+		from message as m,user as u
+		where
+		m.userID = u.userID and
+		isNew=1 and
+		uSendID=#{0} and u.userID=#{1}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		message
+		where mID = #{mid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.cn.hnust.pojo.Message">
+		insert into message (mID,
+		uSendID, userID,
+		time, news, isNew
+		)
+		values (#{mid,jdbcType=INTEGER},
+		#{usendid,jdbcType=INTEGER},
+		#{userid,jdbcType=INTEGER},
+		#{time,jdbcType=TIMESTAMP}, #{news,jdbcType=VARCHAR},
+		#{isnew,jdbcType=INTEGER}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.cn.hnust.pojo.Message">
+		insert into message
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="mid != null">
+				mID,
+			</if>
+			<if test="usendid != null">
+				uSendID,
+			</if>
+			<if test="userid != null">
+				userID,
+			</if>
+			<if test="time != null">
+				time,
+			</if>
+			<if test="news != null">
+				news,
+			</if>
+			<if test="isnew != null">
+				isNew,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="mid != null">
+				#{mid,jdbcType=INTEGER},
+			</if>
+			<if test="usendid != null">
+				#{usendid,jdbcType=INTEGER},
+			</if>
+			<if test="userid != null">
+				#{userid,jdbcType=INTEGER},
+			</if>
+			<if test="time != null">
+				#{time,jdbcType=TIMESTAMP},
+			</if>
+			<if test="news != null">
+				#{news,jdbcType=VARCHAR},
+			</if>
+			<if test="isnew != null">
+				#{isnew,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.cn.hnust.pojo.Message">
+		update message
+		<set>
+			<if test="usendid != null">
+				uSendID = #{usendid,jdbcType=INTEGER},
+			</if>
+			<if test="userid != null">
+				userID = #{userid,jdbcType=INTEGER},
+			</if>
+			<if test="time != null">
+				time = #{time,jdbcType=TIMESTAMP},
+			</if>
+			<if test="news != null">
+				news = #{news,jdbcType=VARCHAR},
+			</if>
+			<if test="isnew != null">
+				isNew = #{isnew,jdbcType=INTEGER},
+			</if>
+		</set>
+		where mID = #{mid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.cn.hnust.pojo.Message">
+		update message
+		set
+		uSendID = #{usendid,jdbcType=INTEGER},
+		userID =
+		#{userid,jdbcType=INTEGER},
+		time = #{time,jdbcType=TIMESTAMP},
+		news =
+		#{news,jdbcType=VARCHAR},
+		isNew = #{isnew,jdbcType=INTEGER}
+		where mID =
+		#{mid,jdbcType=INTEGER}
+	</update>
+</mapper>
