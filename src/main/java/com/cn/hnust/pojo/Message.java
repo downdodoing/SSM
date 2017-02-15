@@ -3,63 +3,83 @@ package com.cn.hnust.pojo;
 import java.util.Date;
 
 public class Message {
-    private Integer mid;
+	private Integer mid;
 
-    private Integer usendid;
+	private Integer usendid;
 
-    private Integer userid;
+	private Integer userid;
 
-    private Date time;
+	private Date time;
 
-    private String news;
+	private String news;
 
-    private Integer isnew;
+	private Integer isnew;
 
-    public Integer getMid() {
-        return mid;
-    }
+	private String netname;
 
-    public void setMid(Integer mid) {
-        this.mid = mid;
-    }
+	private String remarks;
 
-    public Integer getUsendid() {
-        return usendid;
-    }
+	public Integer getMid() {
+		return mid;
+	}
 
-    public void setUsendid(Integer usendid) {
-        this.usendid = usendid;
-    }
+	public void setMid(Integer mid) {
+		this.mid = mid;
+	}
 
-    public Integer getUserid() {
-        return userid;
-    }
+	public Integer getUsendid() {
+		return usendid;
+	}
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
-    }
+	public void setUsendid(Integer usendid) {
+		this.usendid = usendid;
+	}
 
-    public Date getTime() {
-        return time;
-    }
+	public Integer getUserid() {
+		return userid;
+	}
 
-    public void setTime(Date time) {
-        this.time = time;
-    }
+	public void setUserid(Integer userid) {
+		this.userid = userid;
+	}
 
-    public String getNews() {
-        return news;
-    }
+	public Date getTime() {
+		return time;
+	}
 
-    public void setNews(String news) {
-        this.news = news == null ? null : news.trim();
-    }
+	public void setTime(Date time) {
+		this.time = time;
+	}
 
-    public Integer getIsnew() {
-        return isnew;
-    }
+	public String getNews() {
+		return news;
+	}
 
-    public void setIsnew(Integer isnew) {
-        this.isnew = isnew;
-    }
+	public void setNews(String news) {
+		this.news = news == null ? null : news.trim();
+	}
+
+	public Integer getIsnew() {
+		return isnew;
+	}
+
+	public void setIsnew(Integer isnew) {
+		this.isnew = isnew;
+	}
+
+	public String getNetname() {
+		return netname;
+	}
+
+	public void setNetname(String netname) {
+		this.netname = netname == null ? null : netname.trim();
+	}
+
+	public String getRemarks() {
+		return remarks;
+	}
+
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
 }

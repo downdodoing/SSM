@@ -8,40 +8,32 @@
 		<result column="time" property="time" jdbcType="TIMESTAMP" />
 		<result column="news" property="news" jdbcType="VARCHAR" />
 		<result column="isNew" property="isnew" jdbcType="INTEGER" />
-	</resultMap>
-	<resultMap type="com.cn.hnust.pojo.Message_User" id="m_uResultMap">
-		<id column="mID" property="mid" jdbcType="INTEGER" />
-		<result column="uSendID" property="usendid" jdbcType="INTEGER" />
-		<result column="userID" property="userid" jdbcType="INTEGER" />
-		<result column="time" property="time" jdbcType="TIMESTAMP" />
-		<result column="news" property="news" jdbcType="VARCHAR" />
-		<result column="isNew" property="isnew" jdbcType="INTEGER" />
 		<result column="netName" property="netname" jdbcType="VARCHAR" />
+		<result column="remarks" property="remarks" jdbcType="VARCHAR" />
 	</resultMap>
 	<sql id="Base_Column_List">
-		mID, uSendID, userID, time, news, isNew
-	</sql>
-	<sql id="Base_M_U_List">
-		mID, uSendID, u.userID, time, news, isNew,netName
+		mID, uSendID, m.userID, time, news, isNew,netName,remarks
 	</sql>
 	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
 		parameterType="java.lang.Integer">
 		select
 		<include refid="Base_Column_List" />
-		from message
-		where mID = #{mid,jdbcType=INTEGER}
+		from message as m,user as u
+		where mID = #{mid,jdbcType=INTEGER} and
+		m.uSendID = u.userID
 	</select>
 	<select id="selectAll" resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
-		from message
+		from message as m,user as u
+		where m.uSendID = u.userID
 	</select>
-	<select id="selectById" resultMap="m_uResultMap">
+	<select id="selectById" resultMap="BaseResultMap">
 		select
-		<include refid="Base_M_U_List" />
+		<include refid="Base_Column_List" />
 		from message as m,user as u
 		where
-		m.userID = u.userID and
+		m.uSendID = u.userID and
 		isNew=1 and
 		uSendID=#{0} and u.userID=#{1}
 	</select>

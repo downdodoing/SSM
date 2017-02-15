@@ -1,33 +1,75 @@
 package com.cn.hnust.pojo;
 
 public class Contacts {
-    private Integer cid;
+	private Integer cid;
 
-    private Integer userid;
+	private Integer userid;
 
-    private Integer groupid;
+	private Integer groupid;
 
-    public Integer getCid() {
-        return cid;
-    }
+	private String netname;
 
-    public void setCid(Integer cid) {
-        this.cid = cid;
-    }
+	private String remarks;// 备注
 
-    public Integer getUserid() {
-        return userid;
-    }
+	private String signature;// 个性签名
+	
+	private int contactsid; 
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
-    }
+	public Integer getCid() {
+		return cid;
+	}
 
-    public Integer getGroupid() {
-        return groupid;
-    }
+	public void setCid(Integer cid) {
+		this.cid = cid;
+	}
 
-    public void setGroupid(Integer groupid) {
-        this.groupid = groupid;
-    }
+	public Integer getUserid() {
+		return userid;
+	}
+
+	public void setUserid(Integer userid) {
+		this.userid = userid;
+	}
+
+	public Integer getGroupid() {
+		return groupid;
+	}
+
+	public void setGroupid(Integer groupid) {
+		this.groupid = groupid;
+	}
+
+
+	public String getRemarks() {
+		return remarks;
+	}
+
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+
+	public String getSignature() {
+		return signature;
+	}
+
+	public void setSignature(String signature) {
+		this.signature = signature;
+	}
+
+	public String getNetname() {
+		return netname;
+	}
+
+	public void setNetname(String netname) {
+		this.netname = netname;
+	}
+
+	public int getContactsid() {
+		return contactsid;
+	}
+
+	public void setContactsid(int contactsid) {
+		this.contactsid = contactsid;
+	}
+
 }

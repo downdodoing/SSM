@@ -3,53 +3,74 @@ package com.cn.hnust.pojo;
 import java.util.Date;
 
 public class History {
-    private Integer hid;
+	private Integer hid;
 
-    private Integer userid;
+	private Integer userid;
 
-    private Integer cid;
+	private Integer cid;
 
-    private Date time;
+	private Date time;
 
-    private String message;
+	private String message;
 
-    public Integer getHid() {
-        return hid;
-    }
+	private String netname;
 
-    public void setHid(Integer hid) {
-        this.hid = hid;
-    }
+	private String remarks;
 
-    public Integer getUserid() {
-        return userid;
-    }
+	public Integer getHid() {
+		return hid;
+	}
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
-    }
+	public void setHid(Integer hid) {
+		this.hid = hid;
+	}
 
-    public Integer getCid() {
-        return cid;
-    }
+	public Integer getUserid() {
+		return userid;
+	}
 
-    public void setCid(Integer cid) {
-        this.cid = cid;
-    }
+	public void setUserid(Integer userid) {
+		this.userid = userid;
+	}
 
-    public Date getTime() {
-        return time;
-    }
+	public Integer getCid() {
+		return cid;
+	}
 
-    public void setTime(Date time) {
-        this.time = time;
-    }
+	public void setCid(Integer cid) {
+		this.cid = cid;
+	}
 
-    public String getMessage() {
-        return message;
-    }
+	public Date getTime() {
+		return time;
+	}
 
-    public void setMessage(String message) {
-        this.message = message == null ? null : message.trim();
-    }
+	public void setTime(Date time) {
+		this.time = time;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message == null ? null : message.trim();
+	}
+
+	public String getNetname() {
+		return netname;
+	}
+
+	public void setNetname(String netname) {
+		this.netname = netname;
+	}
+
+	public String getRemarks() {
+		return remarks;
+	}
+
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+
 }

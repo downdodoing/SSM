@@ -7,37 +7,47 @@
 		<result column="cID" property="cid" jdbcType="INTEGER" />
 		<result column="time" property="time" jdbcType="TIMESTAMP" />
 		<result column="message" property="message" jdbcType="VARCHAR" />
+		<result column="netName" property="netname" jdbcType="VARCHAR" />
+		<result column="remarks" property="remarks" jdbcType="VARCHAR" />
 	</resultMap>
 	<sql id="Base_Column_List">
-		hID, userID, cID, time, message
+		hID, h.userID, cID, time, message,netName,remarks
 	</sql>
 	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
 		parameterType="java.lang.Integer">
 		select
 		<include refid="Base_Column_List" />
-		from history
-		where hID = #{hid,jdbcType=INTEGER}
+		from history as h,user as u
+		where hID = #{hid,jdbcType=INTEGER} and
+		h.cID = u.userID
 	</select>
+
 	<select id="selectAll" resultMap="BaseResultMap" parameterType="java.lang.Integer">
 		select
 		<include refid="Base_Column_List" />
-		from history
+		from history as h,user as u
 	</select>
+	<!--用于选取哪个用户与哪个好友的历史消息列表 -->
 	<select id="selectByUserIdAndCId" resultMap="BaseResultMap"
 		parameterType="java.lang.Integer">
 		select
 		<include refid="Base_Column_List" />
-		from history
-		where userID=#{0} and cID = #{1}
+		from history as h,user as u
+		where h.userID=#{0} and h.cID = #{1} and
+		h.cID
+		= u.userID
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-		delete from history
+		delete from
+		history
 		where hID = #{hid,jdbcType=INTEGER}
 	</delete>
 	<insert id="insert" parameterType="com.cn.hnust.pojo.History">
-		insert into history (hID, userID, cID,
+		insert into history (hID,
+		userID, cID,
 		time, message)
-		values (#{hid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER},
+		values (#{hid,jdbcType=INTEGER},
+		#{userid,jdbcType=INTEGER},
 		#{cid,jdbcType=INTEGER},
 		#{time,jdbcType=TIMESTAMP}, #{message,jdbcType=VARCHAR})
 	</insert>
@@ -98,10 +108,12 @@
 	</update>
 	<update id="updateByPrimaryKey" parameterType="com.cn.hnust.pojo.History">
 		update history
-		set userID = #{userid,jdbcType=INTEGER},
+		set
+		userID = #{userid,jdbcType=INTEGER},
 		cID = #{cid,jdbcType=INTEGER},
 		time = #{time,jdbcType=TIMESTAMP},
-		message = #{message,jdbcType=VARCHAR}
+		message =
+		#{message,jdbcType=VARCHAR}
 		where hID = #{hid,jdbcType=INTEGER}
 	</update>
 </mapper>

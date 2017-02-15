@@ -5,17 +5,17 @@ import java.util.List;
 import com.cn.hnust.pojo.User;
 
 public interface UserDao {
-    int deleteByPrimaryKey(Integer userid);
+	int deleteByPrimaryKey(Integer userid);
 
-    int insert(User record);
+	int insert(User record);
 
-    int insertSelective(User record);
-    
-    List<User> selectAll();
+	int insertSelective(User record);
 
-    User selectByPrimaryKey(Integer userid);
+	List<User> selectAll();
 
-    int updateByPrimaryKeySelective(User record);
+	User selectByPrimaryName(String name);
 
-    int updateByPrimaryKey(User record);
+	int updateByPrimaryKeySelective(User record);
+
+	int updateByPrimaryKey(User record);
 }

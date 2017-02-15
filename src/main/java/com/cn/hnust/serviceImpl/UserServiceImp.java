@@ -36,8 +36,8 @@ public class UserServiceImp implements IUserService {
 	}
 
 	@Override
-	public User selectByPrimaryKey(Integer userid) {
-		return this.userDao.selectByPrimaryKey(userid);
+	public User selectByPrimaryName(String name) {
+		return this.userDao.selectByPrimaryName(name);
 	}
 
 	@Override

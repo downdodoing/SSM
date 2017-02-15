@@ -12,7 +12,7 @@ public interface MessageDao {
 	int insertSelective(Message record);
 
 	List<Message> selectAll();
-
+	
 	List<Message> selectById(Integer usendid, Integer userid);
 
 	Message selectByPrimaryKey(Integer mid);

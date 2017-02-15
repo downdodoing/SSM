@@ -13,7 +13,7 @@ public interface IUserService {
 
 	public List<User> selectAll();
 
-	public User selectByPrimaryKey(Integer userid);
+	public User selectByPrimaryName(String name);
 
 	public int updateByPrimaryKeySelective(User record);
 

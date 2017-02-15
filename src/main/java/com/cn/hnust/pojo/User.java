@@ -1,113 +1,123 @@
 package com.cn.hnust.pojo;
 
 public class User {
-    private Integer userid;
+	private Integer userid;
 
-    private String name;
+	private String name;
 
-    private String password;
+	private String password;
 
-    private String sex;
+	private String sex;
 
-    private Integer age;
+	private Integer age;
 
-    private String phonenum;
+	private String phonenum;
 
-    private String netname;
+	private String netname;
 
-    private Boolean headphoto;
+	private String headphoto;
 
-    private String signature;
+	private String signature;
 
-    private String area;
+	private String area;
 
-    private Integer isonline;
+	private Integer isonline;
 
-    public Integer getUserid() {
-        return userid;
-    }
+	private String remarks;
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
-    }
+	public Integer getUserid() {
+		return userid;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setUserid(Integer userid) {
+		this.userid = userid;
+	}
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
+	public String getName() {
+		return name;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public void setName(String name) {
+		this.name = name == null ? null : name.trim();
+	}
 
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public String getSex() {
-        return sex;
-    }
+	public void setPassword(String password) {
+		this.password = password == null ? null : password.trim();
+	}
 
-    public void setSex(String sex) {
-        this.sex = sex == null ? null : sex.trim();
-    }
+	public String getSex() {
+		return sex;
+	}
 
-    public Integer getAge() {
-        return age;
-    }
+	public void setSex(String sex) {
+		this.sex = sex == null ? null : sex.trim();
+	}
 
-    public void setAge(Integer age) {
-        this.age = age;
-    }
+	public Integer getAge() {
+		return age;
+	}
 
-    public String getPhonenum() {
-        return phonenum;
-    }
+	public void setAge(Integer age) {
+		this.age = age;
+	}
 
-    public void setPhonenum(String phonenum) {
-        this.phonenum = phonenum == null ? null : phonenum.trim();
-    }
+	public String getPhonenum() {
+		return phonenum;
+	}
 
-    public String getNetname() {
-        return netname;
-    }
+	public void setPhonenum(String phonenum) {
+		this.phonenum = phonenum == null ? null : phonenum.trim();
+	}
 
-    public void setNetname(String netname) {
-        this.netname = netname == null ? null : netname.trim();
-    }
+	public String getNetname() {
+		return netname;
+	}
 
-    public Boolean getHeadphoto() {
-        return headphoto;
-    }
+	public void setNetname(String netname) {
+		this.netname = netname == null ? null : netname.trim();
+	}
 
-    public void setHeadphoto(Boolean headphoto) {
-        this.headphoto = headphoto;
-    }
+	public String getHeadphoto() {
+		return headphoto;
+	}
 
-    public String getSignature() {
-        return signature;
-    }
+	public void setHeadphoto(String headphoto) {
+		this.headphoto = headphoto;
+	}
 
-    public void setSignature(String signature) {
-        this.signature = signature == null ? null : signature.trim();
-    }
+	public String getSignature() {
+		return signature;
+	}
 
-    public String getArea() {
-        return area;
-    }
+	public void setSignature(String signature) {
+		this.signature = signature == null ? null : signature.trim();
+	}
 
-    public void setArea(String area) {
-        this.area = area == null ? null : area.trim();
-    }
+	public String getArea() {
+		return area;
+	}
 
-    public Integer getIsonline() {
-        return isonline;
-    }
+	public void setArea(String area) {
+		this.area = area == null ? null : area.trim();
+	}
 
-    public void setIsonline(Integer isonline) {
-        this.isonline = isonline;
-    }
+	public Integer getIsonline() {
+		return isonline;
+	}
+
+	public void setIsonline(int isonline) {
+		this.isonline = isonline;
+	}
+
+	public String getRemarks() {
+		return remarks;
+	}
+
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
 }
